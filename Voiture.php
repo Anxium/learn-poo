@@ -3,8 +3,8 @@
 class Voiture 
 {
     
-    private $plaque;
-    private $annee;
+    private $plaque = null;
+    private $annee = null;
     private $kilometrage = null;
     private $marque = null;
     private $modele = null;
