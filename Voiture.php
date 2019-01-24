@@ -3,79 +3,79 @@
 class Voiture 
 {
     
-    private $_plaque;
-    private $_annee;
-    private $_kilometrage;
-    private $_marque;
-    private $_modele;
-    private $_couleur;
-    private $_poids;
+    private $plaque;
+    private $annee;
+    private $kilometrage = null;
+    private $marque = null;
+    private $modele = null;
+    private $couleur = null;
+    private $poids = null;
 
     public function __construct($plaque, $annee, $kilometrage, $marque, $modele, $couleur, $poids)
     {
 
-        $this->_plaque = $plaque;
-        $this->_annee = $annee;
-        $this->_kilometrage = $kilometrage;
-        $this->_marque = $marque;
-        $this->_modele = $modele;
-        $this->_couleur = $couleur;
-        $this->_poids = $poids;
+        $this->plaque = $plaque;
+        $this->annee = $annee;
+        $this->kilometrage = $kilometrage;
+        $this->marque = $marque;
+        $this->modele = $modele;
+        $this->couleur = $couleur;
+        $this->poids = $poids;
 
     }
 
     public function getPlaque()
     {
-        return $this->_plaque;
+        return $this->plaque;
     }
 
     public function getAnnee()
     {
-        return $this->_annee;
+        return $this->annee;
     }
 
     public function getKilometrage()
     {
-        return $this->_kilometrage;
+        return $this->kilometrage;
     }
 
     public function getMarque()
     {
-        return $this->_marque;
+        return $this->marque;
     }
 
     public function getModele()
     {
-        return $this->_modele;
+        return $this->modele;
     }
 
     public function getCouleur()
     {
-        return $this->_couleur;
+        return $this->couleur;
     }
 
     public function getPoids()
     {
-        return floatval($this->_poids) . ' Tonnes';
+        return floatval($this->poids) . ' Tonnes';
     }
 
     public function getReserved()
     {
-        return strtolower($this->_marque) == 'audi' ? 'Réservée' : 'Libre'; 
+        return strtolower($this->marque) == 'audi' ? 'Réservée' : 'Libre'; 
     }
 
     public function getType()
     {
-        return floatval($this->_poids) > 3.5 ? 'Utilitaire' : 'Particulière';
+        return floatval($this->poids) > 3.5 ? 'Utilitaire' : 'Particulière';
     }
 
     public function getCountry()
     {
-        if (strtolower(substr($this->_plaque, 0, 2)) == 'be') {
+        if (strtolower(substr($this->plaque, 0, 2)) == 'be') {
             $country = 'Belgique';
-        } else if (strtolower(substr($this->_plaque, 0, 2)) == 'fr') {
+        } elseif (strtolower(substr($this->plaque, 0, 2)) == 'fr') {
             $country = 'France';
-        } else if (strtolower(substr($this->_plaque, 0, 2)) == 'de') {
+        } elseif (strtolower(substr($this->plaque, 0, 2)) == 'de') {
             $country = 'Allemagne';
         } else {
             $country = 'Autre';
@@ -86,9 +86,9 @@ class Voiture
 
     public function getUsure()
     {
-        if($this->_kilometrage < 100000) {
+        if($this->kilometrage < 100000) {
             $usure = 'low';
-        } else if ($this->_kilometrage >= 100000 && $this->_kilometrage <= 200000) {
+        } else if ($this->kilometrage >= 100000 && $this->kilometrage <= 200000) {
             $usure = 'middle';
         } else {
             $usure = 'high';
@@ -99,12 +99,12 @@ class Voiture
 
     public function getAge()
     {
-        return strftime('%Y') - $this->_annee;
+        return strftime('%Y') - $this->annee;
     }
 
     public function rouler()
     {
-        return $this->_kilometrage += 100000;
+        return $this->kilometrage += 100000;
     }
 
     public function display()
